@@ -9,7 +9,7 @@ namespace projektKompo.Models
     {
         public string Tittle { get; set; }
         public string Description { get; set; }
-        public virtual Category Category { get; set; }
-        public ICollection<RattingReview> RattingReview { get; set; }
+        //public virtual Category Category { get; set; }
+        //public ICollection<RattingReview> RattingReview { get; set; }
     }
 }
