@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projektKompo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,13 @@ namespace projektKompo.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
-        public ActionResult Index()
+        protected ApplicationDbContext _db = new ApplicationDbContext();
+
+        protected override void Dispose(bool disposing)
         {
-            return View();
+            _db.Dispose();
+            base.Dispose(disposing);
         }
+
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace projektKompo.Models
 {
-    public class RattingReview
+    public class RattingReview:IEnitity
     {
         public string Comment { get; set; }
         public virtual Review Review { get; set; }
