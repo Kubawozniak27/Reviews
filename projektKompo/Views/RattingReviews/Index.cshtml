@@ -1,0 +1,14 @@
+﻿@model projektKompo.Models.Review
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Oceń recenzję", "Create", new { reviewId = Model.Id })
+</p>
+
+@Html.Partial("_RattingReviewView",Model.RattingReview)
+@Html.ActionLink("Wróc do listy recenzji", "Index", "Reviews")
