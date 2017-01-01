@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using projektKompo.Models;
+using projektKompo.ViewModels;
 
 namespace projektKompo.Controllers
 {
@@ -48,7 +49,10 @@ namespace projektKompo.Controllers
         // GET: Reviews/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new CreateReviewViewModel();
+            model.Categories = _db.Categories.Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
+
+            return View(model);
         }
 
         // POST: Reviews/Create
