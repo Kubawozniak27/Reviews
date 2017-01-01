@@ -16,6 +16,7 @@ namespace projektKompo.Models
 
         public int CategoryId { get; set; }
 
+        [Display(Name ="Autor")]
         public string Author { get; set; }
 
         public virtual ICollection<RattingReview> RattingReview { get; set; }

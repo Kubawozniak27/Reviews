@@ -66,6 +66,7 @@ namespace projektKompo.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.Author = User.Identity.Name;
                _db.Reviews.Add(review);
                _db.SaveChanges();
                 return RedirectToAction("Index");
