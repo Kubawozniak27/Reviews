@@ -97,10 +97,11 @@ namespace projektKompo.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "Id,Tittle,Description")] Review review)
+        public ActionResult Edit( Review review)
         {
             if (ModelState.IsValid)
             {
+                review.Author = User.Identity.Name;
                _db.Entry(review).State = EntityState.Modified;
                _db.SaveChanges();
                 return RedirectToAction("Index");
