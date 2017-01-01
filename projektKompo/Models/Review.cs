@@ -16,7 +16,7 @@ namespace projektKompo.Models
 
         public int CategoryId { get; set; }
 
-        public string Author { get; set; }C:\Users\Kuba\Desktop\projektKompo\projektKompo\projektKompo\Models\IdentityModels.cs
+        public string Author { get; set; }
 
         public virtual ICollection<RattingReview> RattingReview { get; set; }
     }
