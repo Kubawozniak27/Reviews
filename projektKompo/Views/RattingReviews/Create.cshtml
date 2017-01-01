@@ -15,9 +15,9 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Ratting, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Ratting, htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Ratting, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Ratting, new { htmlAttributes = new { @class = "form-control", placeholder = "0-10" } })
                 @Html.ValidationMessageFor(model => model.Ratting, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control",placeholder = "Twój komentarz..." } })
                 @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,15 +34,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Oceń" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
