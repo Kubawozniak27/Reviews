@@ -47,6 +47,7 @@ namespace projektKompo.Controllers
         }
 
         // GET: Reviews/Create
+        [Authorize]
         public ActionResult Create()
         {
             var model = new CreateReviewViewModel();
@@ -60,6 +61,7 @@ namespace projektKompo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Tittle,Description,CategoryId")] Review review)
         {
             if (ModelState.IsValid)
@@ -73,6 +75,7 @@ namespace projektKompo.Controllers
         }
 
         // GET: Reviews/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -92,6 +95,7 @@ namespace projektKompo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Tittle,Description")] Review review)
         {
             if (ModelState.IsValid)
@@ -104,6 +108,7 @@ namespace projektKompo.Controllers
         }
 
         // GET: Reviews/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -121,6 +126,7 @@ namespace projektKompo.Controllers
         // POST: Reviews/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Review review =_db.Reviews.Find(id);
