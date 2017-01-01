@@ -10,14 +10,24 @@ using projektKompo.Models;
 
 namespace projektKompo.Controllers
 {
-    public class ReviewsController : Controller
+    public class ReviewsController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        
 
         // GET: Reviews
-        public ActionResult Index()
+        public ActionResult Index(int? categoryId = null)
         {
-            return View(db.Reviews.ToList());
+            IEnumerable<Review> reviews;
+            if (categoryId.HasValue)
+            {
+                if (_db.Categories.Any(c => c.Id == categoryId.Value))
+                { 
+                    reviews = _db.Reviews.Where(p => p.CategoryId == categoryId.Value);
+                    return View(reviews);
+                }
+            }
+            reviews = _db.Reviews;
+            return View(reviews);
         }
 
         // GET: Reviews/Details/5
@@ -27,7 +37,7 @@ namespace projektKompo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            Review review =_db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
@@ -50,8 +60,8 @@ namespace projektKompo.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Reviews.Add(review);
-                db.SaveChanges();
+               _db.Reviews.Add(review);
+               _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +75,7 @@ namespace projektKompo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            Review review =_db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
@@ -82,8 +92,8 @@ namespace projektKompo.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(review).State = EntityState.Modified;
-                db.SaveChanges();
+               _db.Entry(review).State = EntityState.Modified;
+               _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(review);
@@ -96,7 +106,7 @@ namespace projektKompo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            Review review =_db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
@@ -109,19 +119,12 @@ namespace projektKompo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Review review = db.Reviews.Find(id);
-            db.Reviews.Remove(review);
-            db.SaveChanges();
+            Review review =_db.Reviews.Find(id);
+           _db.Reviews.Remove(review);
+           _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

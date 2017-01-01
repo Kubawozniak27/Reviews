@@ -8,5 +8,6 @@ namespace projektKompo.Models
     public class Category : IEnitity
     {
         public string Name { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }
