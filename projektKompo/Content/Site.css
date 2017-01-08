@@ -26,3 +26,10 @@ textarea {
     color:red;
     font-weight:bold;
 }
+.textCenter{
+    text-align:center;
+}
+
+option {
+    text-align: center;
+}
