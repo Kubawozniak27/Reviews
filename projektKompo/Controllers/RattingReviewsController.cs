@@ -19,11 +19,13 @@ namespace projektKompo.Controllers
             }
             return HttpNotFound();
         }
+        [Authorize] 
         public ActionResult Create(int reviewId)
         {
             return View();
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Create(RattingReview model)
         {
             if (ModelState.IsValid)
@@ -36,7 +38,7 @@ namespace projektKompo.Controllers
             }
             return View(model);
         }
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
 
@@ -48,6 +50,7 @@ namespace projektKompo.Controllers
             return RedirectToAction("Index", "Reviews");
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Edit( RattingReview model)
         {
 
