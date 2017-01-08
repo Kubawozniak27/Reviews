@@ -19,6 +19,8 @@ namespace projektKompo.Models
         [Display(Name ="Autor")]
         public string Author { get; set; }
 
+        public string Email { get; set; }
+
         public virtual ICollection<RattingReview> RattingReview { get; set; }
     }
 }

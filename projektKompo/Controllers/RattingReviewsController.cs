@@ -30,7 +30,10 @@ namespace projektKompo.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Author = User.Identity.Name;
+                string firstName = _db.Users.Where(m => m.Email == User.Identity.Name).First().FirstName;
+                string lastName = _db.Users.Where(m => m.Email == User.Identity.Name).First().LastName;
+                model.Author = firstName + " " + lastName;
+                model.Email = User.Identity.Name;
 
                 _db.RattingReviews.Add(model);
                 _db.SaveChanges();
@@ -56,7 +59,7 @@ namespace projektKompo.Controllers
 
             if (ModelState.IsValid)
             {
-                model.Author = User.Identity.Name;
+               
                 _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();
                 return RedirectToAction("Index", new { id = model.ReviewId });

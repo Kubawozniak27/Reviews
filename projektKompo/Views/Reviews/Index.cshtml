@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
-                @if (User != null && User.Identity != null && item.Author == User.Identity.Name)
+                @if (User != null && User.Identity != null && item.Email == User.Identity.Name)
                 {
                     <div class="adminLinks">
                         @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }) |

@@ -25,6 +25,8 @@
             </div>
         </div>
         @Html.HiddenFor(model => model.ReviewId)
+        @Html.HiddenFor(model => model.Author)
+        @Html.HiddenFor(model => model.Email)
         <div class="form-group">
             @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

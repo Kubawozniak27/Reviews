@@ -8,7 +8,7 @@
             <div>
                 <h4>@item.Ratting / 10</h4>
                 <small>
-                    Autor: @item.Author @if (User != null && User.Identity != null && item.Author == User.Identity.Name)
+                    Autor: @item.Author @if (User != null && User.Identity != null && item.Email == User.Identity.Name)
                 { @Html.ActionLink("Edytuj", "Edit", new { id = item.Id })}
                 </small>
             </div>

@@ -16,5 +16,6 @@ namespace projektKompo.Models
         public string Comment { get; set; }
         public int ReviewId { get; set; }
         public string Author { get; set; }
+        public string Email { get; set; }
     }
 }
