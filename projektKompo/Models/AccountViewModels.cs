@@ -48,13 +48,13 @@ namespace projektKompo.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
+        [EmailAddress(ErrorMessage = "Błędny adres email.")]
         [Display(Name = "Email")]
-        [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
+        [DataType(DataType.Password, ErrorMessage = "Błędne hasło.")]
         [Display(Name = "Hasło")]
         public string Password { get; set; }
 
@@ -64,27 +64,35 @@ namespace projektKompo.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
+        [EmailAddress(ErrorMessage = "Błędny adres email.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "{0} musi zawierać co najmniej {2} znaków.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
+        [MinLength(6, ErrorMessage = "Pole {0}  musi zawierać co najmniej 6 znaków.")]
+        [MaxLength(100, ErrorMessage = "Pole {0} musi zawierać maksymalnie 100 znaków.")]
         [DataType(DataType.Password)]
         [Display(Name = "Hasło")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Pole {0}  jest wymagane.")]
         [DataType(DataType.Password)]
         [Display(Name = "Potwierdź hasło")]
         [Compare("Password", ErrorMessage = "Hasła muszą się zgadzać.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [Display(Name ="Imię")]
+        [Required(ErrorMessage = "Pole {0}  jest wymagane.")]
+        [MinLength(2, ErrorMessage = "Pole {0}  musi zawierać co najmniej 2 znaki.")]
+        [MaxLength(50, ErrorMessage = "Pole {0}  musi zawierać maksymalnie 50 znaków.")]
+        [RegularExpression("^[A-ZĘÓŁĄŻŹĆŃ][a-zńćźżłąęó]{1,}$", ErrorMessage = "Niepoprawne pole {0}")]
+        [Display(Name = "Imię")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
+        [MinLength(2, ErrorMessage = "Pole {0}  musi zawierać co najmniej 2 znaki.")]
+        [MaxLength(100, ErrorMessage = "Pole {0}  musi zawierać maksymalnie 100 znaków.")]
+        [RegularExpression("^([A-ZŁŻ][a-ząęóżźćńłś]{1,})([- ][A-ZŁŻ][a-ząęóżźćńłś]{1,})?$", ErrorMessage = "Niepoprawne pole {0}")]
         [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
     }

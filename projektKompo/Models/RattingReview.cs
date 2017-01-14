@@ -8,11 +8,13 @@ namespace projektKompo.Models
 {
     public class RattingReview : IEnitity
     {
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
         [Range(0, 10)]
-        [Display(Name ="Ocena")]
+        [Display(Name = "Ocena")]
         public int Ratting { get; set; }
 
-        [Display(Name ="Komentarz")]
+        [MaxLength(500, ErrorMessage = "{0} powinien posiadać maksymalnie 500 znaków.")]
+        [Display(Name = "Komentarz")]
         public string Comment { get; set; }
         public int ReviewId { get; set; }
         public string Author { get; set; }
