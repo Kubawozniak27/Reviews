@@ -9,14 +9,20 @@ namespace projektKompo.ViewModels
 {
     public class CreateReviewViewModel
     {
-        [Display(Name ="Tytuł")]
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
+        [MinLength(2, ErrorMessage = "{0} powinien posiadać co najmniej 2 znaki.")]
+        [MaxLength(100, ErrorMessage = "{0} powinien posiadać maksymalnie 100 znaków.")]
+        [Display(Name = "Tytuł")]
         public string Tittle { get; set; }
 
-        [Display(Name ="Opis recenzji")]
+        [Required(ErrorMessage = "Pole {0} jest wymagane.")]
+        [MinLength(50, ErrorMessage = "{0} powinien posiadać co najmniej 50 znaki.")]
+        [MaxLength(1500, ErrorMessage = "{0} powinien posiadać maksymalnie 1500 znaków.")]
+        [Display(Name = "Opis recenzji")]
         public string Description { get; set; }
 
         public string Author { get; set; }
-        [Display(Name ="Kategoria")]
+        [Display(Name = "Kategoria")]
         public int CategoryId { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
     }
