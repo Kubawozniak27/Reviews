@@ -27,3 +27,22 @@ textarea {
     color: red;
     font-weight: bold;
 }
+.top20px
+{
+    margin-top:17px;
+
+}
+
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+
+.textBoxForTop{
+    margin-top:10px;
+}
+.fontSize{
+    font-size:15px;
+}

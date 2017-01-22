@@ -13,6 +13,7 @@ namespace projektKompo.Models
         [Display(Name = "Ocena")]
         public int Ratting { get; set; }
 
+        [Required(ErrorMessage ="Pole{0} jest wymagane.")]
         [MaxLength(500, ErrorMessage = "{0} powinien posiadać maksymalnie 500 znaków.")]
         [Display(Name = "Komentarz")]
         public string Comment { get; set; }

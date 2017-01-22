@@ -4,11 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Oceny</h2>
+<div class="jumbotron">
+    <h2>Oceny</h2>
 
-<p>
-    @Html.ActionLink("Oceń recenzję", "Create", new { reviewId = Model.Id })
-</p>
+    <p>
+        @Html.ActionLink("Oceń recenzję", "Create", new { reviewId = Model.Id })
+    </p>
 
-@Html.Partial("_RattingReviewView",Model.RattingReview)
-@Html.ActionLink("Wróc do listy recenzji", "Index", "Reviews")
+    @Html.Partial("_RattingReviewView", Model.RattingReview)
+    @Html.ActionLink("Wróc do listy recenzji", "Index", "Reviews")
+</div>
+
+
